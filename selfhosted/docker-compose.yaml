@@ -23,7 +23,7 @@ services:
   # The Bindplane server. Everything an agent, the UI and the CLI talk to.
   # ---------------------------------------------------------------------------
   bindplane:
-    image: ghcr.io/observiq/bindplane-ee:${BINDPLANE_VERSION:-1.102.0}
+    image: ghcr.io/observiq/bindplane-ee:${BINDPLANE_VERSION:-1.103.0}
     container_name: bindplane-server
     restart: unless-stopped
     ports:
@@ -97,7 +97,7 @@ services:
   # down the graphs are empty but telemetry still flows.
   # ---------------------------------------------------------------------------
   prometheus:
-    image: ghcr.io/observiq/bindplane-prometheus:${BINDPLANE_VERSION:-1.102.0}
+    image: ghcr.io/observiq/bindplane-prometheus:${BINDPLANE_VERSION:-1.103.0}
     container_name: bindplane-prometheus
     restart: unless-stopped
     volumes:
@@ -109,6 +109,6 @@ services:
   # visibly broken without it, so it is not optional here.
   # ---------------------------------------------------------------------------
   transform:
-    image: ghcr.io/observiq/bindplane-transform-agent:${BINDPLANE_VERSION:-1.102.0}-bindplane
+    image: ghcr.io/observiq/bindplane-transform-agent:${BINDPLANE_VERSION:-1.103.0}-bindplane
     container_name: bindplane-transform-agent
     restart: unless-stopped

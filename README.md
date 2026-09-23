@@ -69,6 +69,24 @@ with, and that file wins), and the CLI is pointed separately from the collectors
 — `bindplane profile use local`, or `apply` keeps writing to cloud and says it
 worked.
 
+### Starting and stopping it
+
+Once the self-hosted stack is set up and seeded, `./demo.sh` drives all three
+compose stacks in dependency order — server, then collectors, then generators —
+and stops them in reverse:
+
+```bash
+./demo.sh up       # create and start everything; waits for :3001 before the collectors
+./demo.sh down     # remove the containers, keep every volume
+./demo.sh start    # restart stopped containers
+./demo.sh stop     # pause without removing anything
+./demo.sh status   # container state across all three stacks
+```
+
+It works from any directory. None of these pass `-v`, so configurations,
+rollout history, the project secret key and collector registrations all
+survive. It is self-hosted only: `up` and `start` wait on `localhost:3001`.
+
 ## Verify
 
 ```bash
@@ -123,6 +141,7 @@ Per-stream background is in [`docs/claude-generated/`](docs/claude-generated/).
 | `selfhosted/` | A full Bindplane server in Docker — run the demo with no cloud account |
 | `docker-compose.yaml` | The 30 collectors |
 | `docker-compose.blitz.yaml` | Telemetry generators |
+| `demo.sh` | Start/stop/status for the whole self-hosted demo |
 | `samples/` | Replay data, vendored so no blitz checkout is required |
 | `docs/manual-demo-flows/` | Each demo twice — terse flow and illustrated click guide — plus the runbook and screenshots |
 | `docs/claude-generated/` | Per-stream background — one walkthrough per stream |

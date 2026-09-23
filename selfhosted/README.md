@@ -116,6 +116,9 @@ Then run the normal pre-flight in
 
 ## Stop and reset
 
+Day to day, use `../demo.sh up|down|start|stop|status` — see the root README.
+The commands below are for this stack alone.
+
 ```bash
 docker compose -f selfhosted/docker-compose.yaml down          # keeps everything
 docker compose -f selfhosted/docker-compose.yaml down -v       # wipes it clean

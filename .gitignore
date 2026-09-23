@@ -4,3 +4,4 @@ credentials.json
 plan.md
 logs/
 .env.bak-*
+.omc
