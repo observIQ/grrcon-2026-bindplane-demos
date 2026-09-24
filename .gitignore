@@ -5,3 +5,4 @@ plan.md
 logs/
 .env.bak-*
 .omc
+selfhosted/docker-compose.override.yaml

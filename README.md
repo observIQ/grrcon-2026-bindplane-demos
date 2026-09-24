@@ -87,6 +87,10 @@ It works from any directory. None of these pass `-v`, so configurations,
 rollout history, the project secret key and collector registrations all
 survive. It is self-hosted only: `up` and `start` wait on `localhost:3001`.
 
+Pipeline Intelligence is off by default. To turn it on,
+run `./setup-pipeline-intelligence.sh` once, then `./demo.sh up` — details in
+[`selfhosted/README.md`](selfhosted/README.md#pipeline-intelligence).
+
 ## Verify
 
 ```bash
@@ -135,17 +139,18 @@ Per-stream background is in [`docs/claude-generated/`](docs/claude-generated/).
 
 ## Layout
 
-| Path | Contents |
-|---|---|
-| `bindplane/` | Sources, destinations, connector, configurations, fleets. Applied in filename order. |
-| `selfhosted/` | A full Bindplane server in Docker — run the demo with no cloud account |
-| `docker-compose.yaml` | The 30 collectors |
-| `docker-compose.blitz.yaml` | Telemetry generators |
-| `demo.sh` | Start/stop/status for the whole self-hosted demo |
-| `samples/` | Replay data, vendored so no blitz checkout is required |
-| `docs/manual-demo-flows/` | Each demo twice — terse flow and illustrated click guide — plus the runbook and screenshots |
-| `docs/claude-generated/` | Per-stream background — one walkthrough per stream |
-| `.claude/` | Full reference, split by topic. Start at `.claude/00-index.md`. |
+| Path                             | Contents                                                                                    |
+| -------------------------------- | ------------------------------------------------------------------------------------------- |
+| `bindplane/`                     | Sources, destinations, connector, configurations, fleets. Applied in filename order.        |
+| `selfhosted/`                    | A full Bindplane server in Docker — run the demo with no cloud account                      |
+| `docker-compose.yaml`            | The 30 collectors                                                                           |
+| `docker-compose.blitz.yaml`      | Telemetry generators                                                                        |
+| `demo.sh`                        | Start/stop/status for the whole self-hosted demo                                            |
+| `setup-pipeline-intelligence.sh` | One-time opt-in for Pipeline Intelligence (writes the creds override)                       |
+| `samples/`                       | Replay data, vendored so no blitz checkout is required                                      |
+| `docs/manual-demo-flows/`        | Each demo twice — terse flow and illustrated click guide — plus the runbook and screenshots |
+| `docs/claude-generated/`         | Per-stream background — one walkthrough per stream                                          |
+| `.claude/`                       | Full reference, split by topic. Start at `.claude/00-index.md`.                             |
 
 ## Requirements
 

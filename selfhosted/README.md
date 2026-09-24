@@ -114,6 +114,22 @@ when its value changes" trap does not apply.
 Then run the normal pre-flight in
 [`../docs/manual-demo-flows/RUNNING-THESE-DEMOS.md`](../docs/manual-demo-flows/RUNNING-THESE-DEMOS.md).
 
+## Pipeline Intelligence
+
+PI is off by default - the base stack ships without it. Turn it on with:
+
+```bash
+./setup-pipeline-intelligence.sh
+./demo.sh up
+```
+
+The script enables the whole feature at once - flags, Gemini project, and
+credentials - by writing a gitignored `docker-compose.override.yaml` that
+`demo.sh` layers on automatically. It uses your gcloud ADC (or runs
+`gcloud auth application-default login`, or a service-account key via
+`GEMINI_CREDENTIALS_FILE`). Point at your own project by setting
+`GEMINI_PROJECT_ID` in `.env`. Delete the override to turn PI back off.
+
 ## Stop and reset
 
 Day to day, use `../demo.sh up|down|start|stop|status` — see the root README.
@@ -140,7 +156,7 @@ get the pre-rollout "before" state back once you have rolled something out.
   finishes fails with `unknown SourceType: apache_common`. It takes seconds, so
   just re-run the apply — it is not a broken install.
 - **The license is not committed** — this repo is public. Paste it bare; compose
-  does not strip quotes, so `'H4sIA...'` is read *with* them and the server
+  does not strip quotes, so `'H4sIA...'` is read _with_ them and the server
   refuses to start.
 - **Server and collector versions are separate tracks.** There is no
   `bindplane-ee:1.106.0` to match `BDOT_VERSION`. `BINDPLANE_VERSION` covers all
